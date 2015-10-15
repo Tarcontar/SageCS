@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 //   64 size of 4 bytes
 //   96 vertex normals for bump mapping? (specular and diffuse normals)
 //   97 vertex normals for bump mapping? (specular and diffuse normals)
-//   643 compressed animation data
 
 namespace SageCS.Core.Loaders
 {
@@ -269,7 +268,24 @@ namespace SageCS.Core.Loaders
             uint flavor = ReadShort(br);
         }
 
-        private static void ReadTimeCodedAnimVector(BinaryReader br, uint ChunkEnd)
+        private static void ReadTimeCodedAnimationChannel(BinaryReader br, uint ChunkEnd)
+        {
+            long TimeCodesCount = ReadLong(br);
+            uint Pivot = ReadShort(br);
+            byte VectorLen = ReadByte(br);
+            byte Type = ReadByte(br);
+
+            while (br.BaseStream.Position < ChunkEnd)
+            {
+                long frame = ReadLong(br);
+                if (Type == 6)
+                    ReadQuaternion(br);
+                else
+                    ReadFloat(br);
+            } 
+        }
+
+        private static void ReadTimeCodedAnimationVector(BinaryReader br, uint ChunkEnd)
         {
             // A time code is a uint32 that prefixes each vector
             // the MSB is used to indicate a binary (non interpolated) movement
@@ -316,20 +332,25 @@ namespace SageCS.Core.Loaders
 
                 switch (Chunktype)
                 {
+                    /*
                     case 641:
                         ReadCompressedAnimationHeader(br);
                         break;
                     case 642:
-                        br.ReadBytes((int)Chunksize);
+                        ReadTimeCodedAnimationChannel(br, subChunkEnd);
                         break;
+                    */
                     case 643:
+                        Console.WriteLine("chunk 643!!!");
                         br.ReadBytes((int)Chunksize);
                         break;
+                    /*
                     case 644:
-                        ReadTimeCodedAnimVector(br, subChunkEnd);
+                        ReadTimeCodedAnimationVector(br, subChunkEnd);
                         break;
+                    */
                     default:
-                        Console.WriteLine("unknown chunktype: " + Chunktype + "   in CompressedAnimation");
+                        //Console.WriteLine("unknown chunktype: " + Chunktype + "   in CompressedAnimation");
                         br.ReadBytes((int)Chunksize);
                         break;
                 }
@@ -1004,6 +1025,7 @@ namespace SageCS.Core.Loaders
 
                 switch (Chunktype)
                 {
+                    /*
                     case 0:
                         //mesh
                         //if the w3d file contains mesh data create a new model object
@@ -1022,10 +1044,12 @@ namespace SageCS.Core.Loaders
                         //Animation
                         ReadAnimation(br, ChunkEnd);
                         break;
+                    */
                     case 640:
                         //CompressedAnimation
                         ReadCompressedAnimation(br, ChunkEnd);
                         break;
+                    /*
                     case 1792:
                         //HLod
                         ReadHLod(br, ChunkEnd);
@@ -1034,8 +1058,9 @@ namespace SageCS.Core.Loaders
                         //Box
                         ReadBox(br);
                         break;
+                    */
                     default:
-                        Console.WriteLine("unknown chunktype: " + Chunktype + "   in File");
+                        //Console.WriteLine("unknown chunktype: " + Chunktype + "   in File");
                         br.ReadBytes((int)Chunksize);
                         break;
                 }

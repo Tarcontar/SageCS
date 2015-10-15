@@ -61,5 +61,18 @@ namespace SageCS.Core
             }
             return streams;
         }
+
+        public static void OpenAllW3D()
+        {
+            List<Stream> streams = new List<Stream>();
+            foreach (KeyValuePair<string, Stream> entry in entries)
+            {
+                if (entry.Key.ToLower().EndsWith(".w3d"))
+                {
+                    Console.WriteLine(entry.Key);
+                    W3DLoader.Load(entry.Value);
+                }
+            }
+        }
     }
 }

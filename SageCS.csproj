@@ -80,8 +80,60 @@
     <Compile Include="Source\Core\Loaders\ConstFile.cs" />
     <Compile Include="Source\Core\Loaders\INIParser.cs" />
     <Compile Include="Source\Core\Loaders\ImageLoader.cs" />
+    <Compile Include="Source\Core\Loaders\MapLoader.cs" />
     <Compile Include="Source\Core\Loaders\W3DLoader.cs" />
     <Compile Include="Source\Core\Loaders\WavLoader.cs" />
+    <Compile Include="Source\Environment\Assets\Asset.cs" />
+    <Compile Include="Source\Environment\Assets\AssetList.cs" />
+    <Compile Include="Source\Environment\Assets\BlendDirection.cs" />
+    <Compile Include="Source\Environment\Assets\BlendInfo.cs" />
+    <Compile Include="Source\Environment\Assets\BlendTileData.cs" />
+    <Compile Include="Source\Environment\Assets\BuildList.cs" />
+    <Compile Include="Source\Environment\Assets\BuildLists.cs" />
+    <Compile Include="Source\Environment\Assets\CameraAnimationList.cs" />
+    <Compile Include="Source\Environment\Assets\EnvironmentData.cs" />
+    <Compile Include="Source\Environment\Assets\FogSettings.cs" />
+    <Compile Include="Source\Environment\Assets\GlobalLighting.cs" />
+    <Compile Include="Source\Environment\Assets\GlobalVersion.cs" />
+    <Compile Include="Source\Environment\Assets\GlobalWaterSettings.cs" />
+    <Compile Include="Source\Environment\Assets\IAsset.cs" />
+    <Compile Include="Source\Environment\Assets\LibraryMapLists.cs" />
+    <Compile Include="Source\Environment\Assets\LibraryMaps.cs" />
+    <Compile Include="Source\Environment\Assets\Light.cs" />
+    <Compile Include="Source\Environment\Assets\MajorAsset.cs" />
+    <Compile Include="Source\Environment\Assets\HeightMapData.cs" />
+    <Compile Include="Source\Environment\Assets\MissionHotSpot.cs" />
+    <Compile Include="Source\Environment\Assets\MissionHotSpots.cs" />
+    <Compile Include="Source\Environment\Assets\MissionObjective.cs" />
+    <Compile Include="Source\Environment\Assets\MissionObjectives.cs" />
+    <Compile Include="Source\Environment\Assets\MPPositionInfo.cs" />
+    <Compile Include="Source\Environment\Assets\MPPositionList.cs" />
+    <Compile Include="Source\Environment\Assets\NamedCameras.cs" />
+    <Compile Include="Source\Environment\Assets\Object.cs" />
+    <Compile Include="Source\Environment\Assets\ObjectsList.cs" />
+    <Compile Include="Source\Environment\Assets\Passability.cs" />
+    <Compile Include="Source\Environment\Assets\Player.cs" />
+    <Compile Include="Source\Environment\Assets\PlayerScriptsList.cs" />
+    <Compile Include="Source\Environment\Assets\PostEffect.cs" />
+    <Compile Include="Source\Environment\Assets\PostEffectsChunk.cs" />
+    <Compile Include="Source\Environment\Assets\RiverArea.cs" />
+    <Compile Include="Source\Environment\Assets\RiverAreas.cs" />
+    <Compile Include="Source\Environment\Assets\ScriptList.cs" />
+    <Compile Include="Source\Environment\Assets\SidesList.cs" />
+    <Compile Include="Source\Environment\Assets\StandingWaterArea.cs" />
+    <Compile Include="Source\Environment\Assets\StandingWaterAreas.cs" />
+    <Compile Include="Source\Environment\Assets\StandingWaveArea.cs" />
+    <Compile Include="Source\Environment\Assets\StandingWaveAreas.cs" />
+    <Compile Include="Source\Environment\Assets\SubAsset T.cs" />
+    <Compile Include="Source\Environment\Assets\SubAsset.cs" />
+    <Compile Include="Source\Environment\Assets\Team.cs" />
+    <Compile Include="Source\Environment\Assets\Teams.cs" />
+    <Compile Include="Source\Environment\Assets\Texture.cs" />
+    <Compile Include="Source\Environment\Assets\TriggerArea.cs" />
+    <Compile Include="Source\Environment\Assets\TriggerAreas.cs" />
+    <Compile Include="Source\Environment\Assets\WaypointsList.cs" />
+    <Compile Include="Source\Environment\Assets\WorldInfo.cs" />
+    <Compile Include="Source\Environment\Utility\IOUtility.cs" />
     <Compile Include="Source\Graphics\Hierarchy.cs" />
     <Compile Include="Source\Graphics\Mesh.cs" />
     <Compile Include="Source\Graphics\Renderer.cs" />
@@ -113,6 +165,7 @@
     <Compile Include="Source\INI\StreamedSound.cs" />
     <Compile Include="Source\INI\Upgrade.cs" />
     <Compile Include="Source\INI\Weapon.cs" />
+    <Compile Include="Source\Environment\Map.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -136,7 +189,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Source\Terrain\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
